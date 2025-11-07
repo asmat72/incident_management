@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incident List</title>
+    <link rel="stylesheet" href="{% static 'incident_app/style.css' %}">
+    <style>
+        .nav-bar {
+	    position: absolute;
+	    top: 10px;
+	    right: 20px;
+	}
+	.nav-bar .btn {
+	    padding: 6px 12px;
+	    background-color: #007bff;
+	    color: white;
+	    text-decoration: none;
+	    border-radius: 4px;
+	    margin-left: 10px;
+	    border: none;
+	    cursor: pointer;
+	}
+	.nav-bar .btn:hover {
+		background-color: #0056b3;
+	}
+    </style>
+</head>
+<body>
+
+    <!-- 🔐 Top-right Logout/Login/Register -->
+    <div class="nav-bar">
+        {% if user.is_authenticated %}
+	    <span>Welcome, {{ user.username }}!</span>
+	    <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+		{% csrf_token %}
+		<button type="submit" class="btn">Logout</button>
+	    </form>
+	{% else %}
+	    <a href="{% url 'login' %}" class="btn">Login</a>
+	    <a href="{% url 'register' %}" class="btn">Register</a>
+	{% endif %}
+    </div>
+    
+    <!-- ✅ Show incident list only if logged in -->
+    {% if user.is_authenticated %}
+        <h1>All Incidents</h1>
+	<a href="{% url 'create-incident' %}" class="btn">Create New Incident</a>
+
+        <ul>
+            {% for incident in incidents %}
+	        <li>
+		    <strong>{{ incident.title }}</strong> - {{ incident.status }}
+		    <a href="{% url 'incident-detail' incident.pk %}" class="view-btn">View</a>
+		</li>
+	    {% empty %}
+	        <li>No incidents found.</li>
+	    {% endfor %}
+	</ul>
+    {% else %}
+        <h2>Please log in to view incidents.</h2>
+    {% endif %}
+
+</body>
+</html>

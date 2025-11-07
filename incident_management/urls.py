@@ -15,14 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.http import HttpResponse
-
-def home(request):                                                                               return HttpResponse("Welcome to Incident Management!")  
+from django.urls import path, include  
+from django.contrib.auth import views as auth_views
+from incident_app import views as app_views
 
 urlpatterns = [
-    path('', home),
+    path('', auth_views.LoginView.as_view(template_name='incident_app/login.html'), name='home'),  
+    path('login/', auth_views.LoginView.as_view(template_name='incident_app/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('admin/', admin.site.urls),
-    path('api/incidents/', include('incident_app.urls')),
+    path('incidents/', include('incident_app.urls')),
+    path('register/', app_views.register, name='register'),
 ]
 

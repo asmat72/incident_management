@@ -1,8 +1,52 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from .models import Incident 
+from .forms import IncidentForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Incident
 from .serializers import IncidentSerializer
+
+@login_required
+def incident_list(request):
+    incidents = Incident.objects.all()
+    return render(request, 'incident_app/list.html', {'incidents': incidents})
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'incident_app/register.html', {'form': form})
+
+def incident_detail(request, pk):
+    incident = get_object_or_404(Incident, pk=pk)
+    form = IncidentForm(instance=incident)
+
+    if request.method == 'POST':
+        form = IncidentForm(request.POST, instance=incident)
+        if form.is_valid():
+            form.save()
+            return redirect('incident-list')
+
+    return render(request, 'incident_app/incident_detail.html', {
+        'incident': incident,
+        'form': form
+    })
+
+def create_incident(request):
+    if request.method == 'POST':
+        form = IncidentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('incident-list')
+    else:
+        form = IncidentForm()
+    return render(request, 'incident_app/incident_detail.html', {'form': form})
 
 class CreateIncident(APIView):
     def post(self, request):
