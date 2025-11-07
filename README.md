@@ -3,7 +3,7 @@
 # 🚨 Open-Source Incident Management System
    - A lightweight, open-source portal to log, track, and resolve infrastructure or application issues — designed with role-based access and RESTful
 
-- **🎯 Objective:**
+- ***🎯 Objective:***
    - Clone the repository: git clone "https://github.com/asmat72/incident_management.git"
    - Build a basic incident management system that empowers teams to:
      -  Log and categorize incidents.
