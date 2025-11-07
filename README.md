@@ -79,7 +79,7 @@
         - I display sample incidents and screenshots to validate the system’s functionality.
 
 - ***🙌 Credits:***
-   - Developed by ***Asmatullah Khan***.  
+   - Developed by ***ᴀꜱᴍᴀᴛuʟʟᴀн кнαη***.  
    - Aspiring DevOps & Django Developer.  
    - Focused on building real-world infrastructure and incident management solutions.
 
