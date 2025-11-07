@@ -40,28 +40,28 @@
 
 - 📁 Suggested Project Structure:
    - incident-management/
-   -     ├── incident_app/           # Django app for incidents
-   -     │    ├── migrations/
-   -     │    ├── admin.py
-   -     │    ├── apps.py
-   -     │    ├── tests.py 
-   -     │    ├── templates/
-   -     │    ├── static/
-   -     │    ├── models.py
-   -     │    ├── views.py
-   -     │    ├── urls.py
-   -     │    ├── serializers.py 
-   -     │    └── forms.py
-   -     ├── incident_management/    # Django project settings
-   -     │    ├── settings.py
-   -     │    ├── urls.py
-   -     │    └── wsgi.py
-   -     ├── db.sqlite3              # SQLite database
-   -     ├── Dockerfile              # Docker build instructions
-   -     ├── docker-compose.yml      # Optional: for multi-container setup
-   -     ├── requirements.txt        # Python dependencies
-   -     ├── manage.py
-   -     └── README.md               # Project documentation
+         ├── incident_app/           # Django app for incidents
+         │    ├── migrations/
+         │    ├── admin.py
+         │    ├── apps.py
+         │    ├── tests.py 
+         │    ├── templates/
+         │    ├── static/
+         │    ├── models.py
+         │    ├── views.py
+         │    ├── urls.py
+         │    ├── serializers.py 
+         │    └── forms.py
+         ├── incident_management/    # Django project settings
+         │    ├── settings.py
+         │    ├── urls.py
+         │    └── wsgi.py
+         ├── db.sqlite3              # SQLite database
+         ├── Dockerfile              # Docker build instructions
+         ├── docker-compose.yml      # Optional: for multi-container setup
+         ├── requirements.txt        # Python dependencies
+         ├── manage.py
+         └── README.md               # Project documentation
 
 - 📦 Deliverables:
    - ✅ Source code hosted on GitHub.
