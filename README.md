@@ -38,7 +38,7 @@
      - Source code management.
      - Collaboration and history tracking.
 
-- ***📁 Suggested Project Structure:***
+- ***📁 Project Structure:***
    - incident-management/
       -   ├── incident_app/           # Django app for incidents
       -   │    ├── migrations/
